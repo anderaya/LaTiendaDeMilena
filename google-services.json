@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1077353889722",
+    "firebase_url": "https://tiendagraciela.firebaseio.com",
+    "project_id": "tiendagraciela",
+    "storage_bucket": "tiendagraciela.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077353889722:android:93ccebf187f9108c8ae783",
+        "android_client_info": {
+          "package_name": "com.app.latiendadegraciela"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077353889722-k9r6cmkgr5qtn8oi49pqd8babb1fp6em.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.latiendadegraciela",
+            "certificate_hash": "5f36552ef85d2f93b592aab7c29a106739bd99f3"
+          }
+        },
+        {
+          "client_id": "1077353889722-4mntb20k77kbc74g6c5ra9tcrtiqra8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6Bc8Mb-6xbOIA-Awt3SaUdRyfJjnNtLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077353889722-4mntb20k77kbc74g6c5ra9tcrtiqra8m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
