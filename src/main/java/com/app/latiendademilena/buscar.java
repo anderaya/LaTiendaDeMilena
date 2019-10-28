@@ -1,4 +1,4 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,17 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class pedido extends AppCompatActivity {
+public class buscar extends AppCompatActivity {
 
     ImageView regresar;
-    Button realizar;
+    Button buscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido);
+        setContentView(R.layout.activity_buscar);
 
-        regresar=(ImageView) findViewById(R.id.imageView20);
+        regresar = (ImageView) findViewById(R.id.imageView19);
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,14 +26,13 @@ public class pedido extends AppCompatActivity {
             }
         });
 
-        realizar=(Button) findViewById(R.id.button11);
-        realizar.setOnClickListener(new View.OnClickListener() {
+        buscar = (Button) findViewById(R.id.button10);
+        buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                //anunciar que el pedido ha sido realizado
+                Intent intent = new Intent(getApplicationContext(), productoss.class);
+                startActivity(intent);
             }
         });
-
     }
 }

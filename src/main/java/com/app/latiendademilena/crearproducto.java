@@ -1,4 +1,5 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,18 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class registrar extends AppCompatActivity {
+public class crearproducto extends AppCompatActivity {
 
     ImageView regresar;
-    Button registrar;
+    Button crear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrar);
+        setContentView(R.layout.activity_crearproducto);
 
-
-        regresar=(ImageView) findViewById(R.id.imageView);
+        regresar = (ImageView) findViewById(R.id.imageView13);
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,16 +27,14 @@ public class registrar extends AppCompatActivity {
             }
         });
 
-        registrar=(Button) findViewById(R.id.button3);
-        registrar.setOnClickListener(new View.OnClickListener() {
+        crear = (Button) findViewById(R.id.button5);
+        crear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                finish();
-                Intent intent = new Intent(getApplicationContext(),menu.class);
+                Intent intent = new Intent(getApplicationContext(), crearproducto.class);
                 startActivity(intent);
             }
         });
-
     }
 }

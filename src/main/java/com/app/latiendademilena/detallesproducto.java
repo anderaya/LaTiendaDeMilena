@@ -1,4 +1,5 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,14 +12,14 @@ import android.widget.ImageView;
 public class detallesproducto extends AppCompatActivity {
 
     ImageView regresar;
-    Button eliminar,ok;
+    Button eliminar, ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detallesproducto);
 
-        regresar=(ImageView) findViewById(R.id.imageView14);
+        regresar = (ImageView) findViewById(R.id.imageView14);
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,7 +27,7 @@ public class detallesproducto extends AppCompatActivity {
             }
         });
 
-        eliminar=(Button) findViewById(R.id.button6);
+        eliminar = (Button) findViewById(R.id.button6);
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,12 +35,12 @@ public class detallesproducto extends AppCompatActivity {
             }
         });
 
-        ok=(Button) findViewById(R.id.button8);
+        ok = (Button) findViewById(R.id.button8);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(),detallesproducto.class);
+                Intent intent = new Intent(getApplicationContext(), detallesproducto.class);
                 startActivity(intent);
             }
         });

@@ -1,24 +1,25 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class crearproducto extends AppCompatActivity {
+public class recuperarcuenta extends AppCompatActivity {
 
     ImageView regresar;
-    Button crear;
+    Button confirmar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crearproducto);
+        setContentView(R.layout.activity_recuperarcuenta);
 
-        regresar=(ImageView) findViewById(R.id.imageView13);
+
+        regresar = findViewById(R.id.imageView3);
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,14 +27,15 @@ public class crearproducto extends AppCompatActivity {
             }
         });
 
-        crear=(Button) findViewById(R.id.button5);
-        crear.setOnClickListener(new View.OnClickListener() {
+        confirmar = findViewById(R.id.button7);
+        confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(),crearproducto.class);
-                startActivity(intent);
+
             }
         });
+
+
     }
 }

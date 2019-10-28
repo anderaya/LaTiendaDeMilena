@@ -1,4 +1,4 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
 
 import org.junit.Test;
 

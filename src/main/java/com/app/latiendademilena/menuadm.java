@@ -1,4 +1,4 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,18 +9,18 @@ import android.widget.TextView;
 
 public class menuadm extends AppCompatActivity {
 
-    TextView crear,productos,pedidos,cerrar;
+    TextView crear, productos, pedidos, cerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menuadm);
 
-        crear=(TextView) findViewById(R.id.textView10);
+        crear = (TextView) findViewById(R.id.textView10);
         crear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),crearproducto.class);
+                Intent intent = new Intent(getApplicationContext(), crearproducto.class);
                 startActivity(intent);
             }
         });
@@ -35,21 +35,21 @@ public class menuadm extends AppCompatActivity {
         });
 
 
-        pedidos=(TextView) findViewById(R.id.textView16);
+        pedidos = (TextView) findViewById(R.id.textView16);
         pedidos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),verpedidos.class);
+                Intent intent = new Intent(getApplicationContext(), verpedidos.class);
                 startActivity(intent);
             }
         });
 
-        cerrar=(TextView) findViewById(R.id.textView17);
+        cerrar = (TextView) findViewById(R.id.textView17);
         cerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });

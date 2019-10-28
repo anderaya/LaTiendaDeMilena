@@ -1,4 +1,5 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +18,7 @@ public class detallesproducton extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detallesproducton);
 
-        regresar=(ImageView) findViewById(R.id.imageView32);
+        regresar = (ImageView) findViewById(R.id.imageView32);
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

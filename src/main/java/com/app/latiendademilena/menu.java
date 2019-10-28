@@ -1,4 +1,5 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class menu extends AppCompatActivity {
-    TextView productos,mapa,pedido,cerrar;
+    TextView productos, mapa, pedido, cerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,34 +26,33 @@ public class menu extends AppCompatActivity {
             }
         });
 
-        mapa=(TextView) findViewById(R.id.textView12);
+        mapa = (TextView) findViewById(R.id.textView12);
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MapsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(intent);
             }
         });
 
-        pedido=(TextView) findViewById(R.id.textView13);
+        pedido = (TextView) findViewById(R.id.textView13);
         pedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),pedido.class);
+                Intent intent = new Intent(getApplicationContext(), pedido.class);
                 startActivity(intent);
             }
         });
 
-        cerrar=(TextView) findViewById(R.id.textView14);
+        cerrar = (TextView) findViewById(R.id.textView14);
         cerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
-
 
 
     }

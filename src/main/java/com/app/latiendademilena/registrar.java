@@ -1,4 +1,5 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,17 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class detallespedido extends AppCompatActivity {
+public class registrar extends AppCompatActivity {
 
     ImageView regresar;
-    Button mapa;
+    Button registrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detallespedido);
+        setContentView(R.layout.activity_registrar);
 
-        regresar=(ImageView) findViewById(R.id.imageView31);
+
+        regresar = (ImageView) findViewById(R.id.imageView);
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,13 +28,16 @@ public class detallespedido extends AppCompatActivity {
             }
         });
 
-        mapa=(Button) findViewById(R.id.button13);
-        mapa.setOnClickListener(new View.OnClickListener() {
+        registrar = (Button) findViewById(R.id.button3);
+        registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MapsActivity.class);
+                finish();
+                finish();
+                Intent intent = new Intent(getApplicationContext(), menu.class);
                 startActivity(intent);
             }
         });
+
     }
 }

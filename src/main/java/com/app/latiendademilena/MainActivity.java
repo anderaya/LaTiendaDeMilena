@@ -1,4 +1,5 @@
-package com.app.latiendadegraciela;
+package com.app.latiendademilena;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     Button iniciar;
-    TextView registrar,recuperar;
+    TextView registrar, recuperar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,34 +20,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        iniciar=findViewById(R.id.button2);
+        iniciar = findViewById(R.id.button2);
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(),menu.class);
+                Intent intent = new Intent(getApplicationContext(), menu.class);
                 startActivity(intent);
 
             }
         });
 
-        registrar=(TextView)findViewById(R.id.textView7);
+        registrar = (TextView) findViewById(R.id.textView7);
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(),registrar.class);
+                Intent intent = new Intent(getApplicationContext(), registrar.class);
                 startActivity(intent);
 
             }
         });
 
-        recuperar=(TextView)findViewById(R.id.textView5);
+        recuperar = (TextView) findViewById(R.id.textView5);
         recuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(),recuperarcuenta.class);
+                Intent intent = new Intent(getApplicationContext(), recuperarcuenta.class);
                 startActivity(intent);
 
             }
