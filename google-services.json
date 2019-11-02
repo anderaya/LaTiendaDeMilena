@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "1077353889722",
-    "firebase_url": "https://tiendagraciela.firebaseio.com",
-    "project_id": "tiendagraciela",
-    "storage_bucket": "tiendagraciela.appspot.com"
+    "project_number": "1015062057786",
+    "firebase_url": "https://latiendademilena-257817.firebaseio.com",
+    "project_id": "latiendademilena-257817",
+    "storage_bucket": "latiendademilena-257817.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1077353889722:android:93ccebf187f9108c8ae783",
+        "mobilesdk_app_id": "1:1015062057786:android:1c3573ba4489e8f46f7603",
         "android_client_info": {
-          "package_name": "com.app.latiendadegraciela"
+          "package_name": "com.app.latiendademilena"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1077353889722-k9r6cmkgr5qtn8oi49pqd8babb1fp6em.apps.googleusercontent.com",
+          "client_id": "1015062057786-1ik1asam7t2au16mtolv37ghav4trprs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.app.latiendadegraciela",
+            "package_name": "com.app.latiendademilena",
             "certificate_hash": "5f36552ef85d2f93b592aab7c29a106739bd99f3"
           }
         },
         {
-          "client_id": "1077353889722-4mntb20k77kbc74g6c5ra9tcrtiqra8m.apps.googleusercontent.com",
+          "client_id": "1015062057786-nf8t204t4kun3onekm87812n8fhld6dv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC6Bc8Mb-6xbOIA-Awt3SaUdRyfJjnNtLE"
+          "current_key": "AIzaSyDSh69F3HV1QSA4i3pO2tSqCuUpG2tzHXE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1077353889722-4mntb20k77kbc74g6c5ra9tcrtiqra8m.apps.googleusercontent.com",
+              "client_id": "1015062057786-nf8t204t4kun3onekm87812n8fhld6dv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

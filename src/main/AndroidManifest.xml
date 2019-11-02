@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.app.latiendademilena">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -18,15 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".detallesproducton"></activity>
-        <activity android:name=".detallespedido" />
-        <activity android:name=".verpedidos" />
-        <activity android:name=".pedido" />
-        <activity android:name=".buscar" />
-        <activity android:name=".productoss" />
-        <activity android:name=".detallesproducto" />
-        <activity android:name=".crearproducto" />
-        <activity android:name=".menuadm" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -41,7 +35,20 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"></activity>
+        <activity
+            android:name="com.app.latiendademilena.MapsActivity"
+            android:label="@string/title_activity_maps"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".detallesproducton" />
+        <activity android:name=".detallespedido" />
+        <activity android:name=".verpedidos" />
+        <activity android:name=".pedido" />
+        <activity android:name=".buscar" />
+        <activity android:name=".productoss" />
+        <activity android:name=".detallesproducto" />
+        <activity android:name=".crearproducto" />
+        <activity android:name=".menuadm" />
         <activity
             android:name=".menu"
             android:label="@string/title_activity_menu"
