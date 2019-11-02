@@ -36,7 +36,7 @@ public class registrar extends AppCompatActivity implements  LocationListener{
     ImageView regresar;
     Button registrar,ingresarubicaciones;
     private FirebaseAuth mAuth;
-    private EditText Usuario, Contraseña,Correo,Direccion;
+    private EditText Usuario, Contraseña,Correo;
 
     LocationManager locationManager;
 
@@ -66,7 +66,7 @@ public class registrar extends AppCompatActivity implements  LocationListener{
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                
                 registrarUsuario();
 
             }
@@ -83,9 +83,9 @@ public class registrar extends AppCompatActivity implements  LocationListener{
 
         mAuth = FirebaseAuth.getInstance();
 
-        Usuario =(EditText)findViewById(R.id.editText4);
-        Contraseña =(EditText)findViewById(R.id.correotext);
-        Correo =(EditText)findViewById(R.id.editText6);
+
+        Contraseña =(EditText)findViewById(R.id.contraseñatext);
+        Correo =(EditText)findViewById(R.id.correotext);
 
     }
 
@@ -151,42 +151,9 @@ public class registrar extends AppCompatActivity implements  LocationListener{
     public void setRegistrarUsuario(String nombre, String correo, String latitud, String longitud){
         String tipo="normal";
         String id=databaseReference.push().getKey();
-        Usuario user=new Usuario(nombre,correo,longitud,latitud,tipo);
+        Usuario user=new Usuario(correo,longitud,latitud,tipo);
         databaseReference.child("usuario").child(id).setValue(user);
         Toast.makeText(registrar.this,"Se ha registrado el usuario ",Toast.LENGTH_LONG).show();
-
-        //Almacenar os datos en un usuario activo
-        databaseReference= FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("usuario").addValueEventListener(new ValueEventListener(){
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-
-                    dataSnapshot.getChildren();
-
-                    for(DataSnapshot ds:dataSnapshot.getChildren()){
-
-                        //mejorar para obtener multiples resultados
-                        if(ds.child("correo").getValue().toString().equals(us.getCorreo())) {
-                            us.setUsuario(ds.child("usuario").getValue().toString());
-                            us.setLongitud(ds.child("longitud").getValue().toString());
-                            us.setLatitud(ds.child("latitud").getValue().toString());
-                            us.setTipouser(ds.child("tipouser").getValue().toString());
-
-
-                            return;
-                        }
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
     }

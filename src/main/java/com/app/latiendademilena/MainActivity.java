@@ -126,15 +126,10 @@ public class MainActivity extends AppCompatActivity {
                                         us.setTipouser(ds.child("tipouser").getValue().toString());
 
 
-                                        if(ds.child("tipouser").getValue().toString().equals("admn")){
-                                            finish();
-                                            Intent intent = new Intent(getApplicationContext(), menuadm.class);
-                                            startActivity(intent);
-                                        }else{
                                             finish();
                                             Intent intent = new Intent(getApplicationContext(), menu.class);
                                             startActivity(intent);
-                                        }
+
                                         return;
 
                                     }

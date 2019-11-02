@@ -35,11 +35,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity
-            android:name="com.app.latiendademilena.MapsActivity"
             android:label="@string/title_activity_maps"
-            tools:ignore="DuplicateActivity" />
+            tools:ignore="DuplicateActivity"></activity>
         <activity android:name=".detallesproducton" />
         <activity android:name=".detallespedido" />
         <activity android:name=".verpedidos" />
