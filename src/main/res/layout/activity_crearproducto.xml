@@ -9,50 +9,55 @@
     tools:layout_editor_absoluteY="0dp">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="274dp"
-        android:layout_height="65dp"
+        android:layout_width="273dp"
+        android:layout_height="61dp"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="225dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="190dp"
+        android:layout_marginTop="203dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="191dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/editText10"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:drawableLeft="@drawable/simbolonumeral"
+            android:ems="10"
             android:hint="Unidades"
-            android:textColor="#FF6518"
-            android:textColorHint="#FF6518" />
+            android:inputType="number"
+            android:text="0"
+            android:textColor="#FF6518" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="274dp"
+        android:id="@+id/textInputLayout"
+        android:layout_width="273dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="263dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/editText11"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:drawableLeft="@drawable/etiqueta"
+            android:ems="10"
             android:hint="Precio"
-            android:textColor="#FF6518"
-            android:textColorHint="#FF6518" />
+            android:inputType="number"
+            android:text="0"
+            android:textColor="#FF6518" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -108,15 +113,16 @@
         android:layout_width="277dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="343dp"
+        android:layout_marginTop="331dp"
         android:layout_marginEnd="27dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="84dp"
         android:background="#FF6518"
         android:drawableLeft="@drawable/imagen"
         android:text="Subir imagen..."
         android:textColor="#FDFDFD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,10 +133,12 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="391dp"
         android:layout_marginEnd="42dp"
+        android:layout_marginBottom="16dp"
         android:background="#FF140A"
         android:drawableEnd="@drawable/confirmar"
         android:text="Crear producto"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,10 +149,8 @@
         android:layout_width="275dp"
         android:layout_height="52dp"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="267dp"
         android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
         android:layout_marginBottom="136dp"
         android:drawableLeft="@drawable/detalle"
         android:ems="10"
@@ -174,6 +180,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nombretext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/producto"

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAuth = FirebaseAuth.getInstance();
+
         //boton iniciar
         iniciar = findViewById(R.id.button2);
         iniciar.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mAuth = FirebaseAuth.getInstance();
         //casillas para guardar datos
         Correo =(EditText)findViewById(R.id.editText3);
         Contraseña = (EditText)findViewById(R.id.editText4);
@@ -81,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
     //objeto de tipo usuario activo
     private usuarioActivo us=new usuarioActivo();
     private DatabaseReference databaseReference;
-    String contraseña,correo;
+
 
     // funcion iniciar sesión
     private void iniciarss(){
-        contraseña= Contraseña.getText().toString().trim();
-        correo= Correo.getText().toString().trim();
+        String contraseña= Contraseña.getText().toString().trim();
+        String correo= Correo.getText().toString().trim();
         us.setCorreo(correo);
 
         if(TextUtils.isEmpty(correo)){
@@ -106,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(MainActivity.this,"Se ha iniciado sesión",Toast.LENGTH_LONG).show();
-                    finish();
+
                     FirebaseUser user = mAuth.getCurrentUser();
 
-                    // Revisar en la base de datos si existe el usuario
+
                     databaseReference= FirebaseDatabase.getInstance().getReference();
                     databaseReference.child("usuario").addValueEventListener(new ValueEventListener() {
                         @Override
@@ -120,15 +121,21 @@ public class MainActivity extends AppCompatActivity {
                                     //mejorar para obtener multiples resultados
                                     if(ds.child("correo").getValue().toString().equals(us.getCorreo())) {
 
-                                        // Almacenar las coordenadas
+
                                         us.setLongitud(ds.child("longitud").getValue().toString());
                                         us.setLatitud(ds.child("latitud").getValue().toString());
                                         us.setTipouser(ds.child("tipouser").getValue().toString());
+                                        us.setCorreo(ds.child("correo").getValue().toString());
 
-
+                                        if(ds.child("tipouser").getValue().toString().equals("admn")){
+                                            finish();
+                                            Intent intent = new Intent(getApplicationContext(), menuadm.class);
+                                            startActivity(intent);
+                                        }else{
                                             finish();
                                             Intent intent = new Intent(getApplicationContext(), menu.class);
                                             startActivity(intent);
+                                        }
 
                                         return;
 
@@ -145,8 +152,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
                 }else{
-                    Toast.makeText(MainActivity.this,"Correo o contraseña incorrecta "+contraseña,Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"Correo o contraseña incorrecta ",Toast.LENGTH_LONG).show();
 
                     // Log.d(TAG, "onComplete: Failed=" + task.getException().getMessage());
 

@@ -5,6 +5,7 @@ public class usuarioActivo {
     static String usuario;
     static String latitud;
     static String longitud;
+    static String tipouser;
 
     public static String getCorreo() {
         return correo;
@@ -46,7 +47,7 @@ public class usuarioActivo {
         usuarioActivo.tipouser = tipouser;
     }
 
-    static String tipouser;
+
 
 }
 

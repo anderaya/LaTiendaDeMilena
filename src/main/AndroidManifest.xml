@@ -45,14 +45,14 @@
         <activity android:name=".productoss" />
         <activity android:name=".detallesproducto" />
         <activity android:name=".crearproducto" />
-        <activity android:name=".menuadm" />
+        <activity android:name=".menuadm"/>
+
+        <activity android:name=".recuperarcuenta" />
+        <activity android:name=".registrar" />
         <activity
             android:name=".menu"
             android:label="@string/title_activity_menu"
-            android:theme="@style/NoActionBar" />
-        <activity android:name=".recuperarcuenta" />
-        <activity android:name=".registrar" />
-        <activity android:name=".MainActivity">
+            android:theme="@style/NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

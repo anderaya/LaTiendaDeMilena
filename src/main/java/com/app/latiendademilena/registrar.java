@@ -36,11 +36,11 @@ public class registrar extends AppCompatActivity implements  LocationListener{
     ImageView regresar;
     Button registrar,ingresarubicaciones;
     private FirebaseAuth mAuth;
-    private EditText Usuario, Contraseña,Correo;
+    private EditText  Contraseña,Correo;
 
     LocationManager locationManager;
 
-    public String usuario,contraseña,correo;
+    public String contraseña,correo;
     public static String tvLongi,tvLati;
     public int selecionado;
 
@@ -53,7 +53,9 @@ public class registrar extends AppCompatActivity implements  LocationListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
         mAuth = FirebaseAuth.getInstance();
+        selecionado=0;
 
+        databaseReference=FirebaseDatabase.getInstance().getReference();
         regresar = (ImageView) findViewById(R.id.imageView);
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +68,7 @@ public class registrar extends AppCompatActivity implements  LocationListener{
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
                 registrarUsuario();
 
             }
@@ -83,57 +85,55 @@ public class registrar extends AppCompatActivity implements  LocationListener{
 
         mAuth = FirebaseAuth.getInstance();
 
-
         Contraseña =(EditText)findViewById(R.id.contraseñatext);
         Correo =(EditText)findViewById(R.id.correotext);
-
+        CheckPermission();
     }
 
     private void registrarUsuario(){
-
-        usuario= Usuario.getText().toString().trim();
+        correo=Correo.getText().toString().trim();
         contraseña= Contraseña.getText().toString().trim();
-        correo= Correo.getText().toString().trim();
-
 
         us.setCorreo(correo);
-                // comprobar datos
-                if(TextUtils.isEmpty(correo)){
-                    Toast.makeText(this,"Se debe ingresar un correo",Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(contraseña)){
-                    Toast.makeText(this,"Falta ingresar la contraseña",Toast.LENGTH_LONG).show();
-                    return;
-                }else if(contraseña.length()<8){
-                    Toast.makeText(this,"La contraseña debe tener por lo menos 8 caracteres",Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(usuario)){
-                    Toast.makeText(this,"Falta ingresar el nombre de usuario",Toast.LENGTH_LONG).show();
 
-                    return;
-                }
+        if(TextUtils.isEmpty(correo)){
+            Toast.makeText(this,"Se debe ingresar un correo",Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(TextUtils.isEmpty(contraseña)){
+            Toast.makeText(this,"Falta ingresar la contraseña",Toast.LENGTH_LONG).show();
+            return;
+        }else if(contraseña.length()<8){
+            Toast.makeText(this,"La contraseña debe tener por lo menos 8 caracteres",Toast.LENGTH_LONG).show();
+            return;
+        }
 
-                if(selecionado!=1){
-                    Toast.makeText(this,"Falta agregar la ubicación",Toast.LENGTH_LONG).show();
+        if(selecionado!=1){
+            Toast.makeText(this,"Falta agregar la ubicación",Toast.LENGTH_LONG).show();
 
-                    return;
-                }
+            return;
+        }
 
         //crear un usuario
         //creating a new user
+
+
         mAuth.createUserWithEmailAndPassword(correo, contraseña)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
                         if (task.isSuccessful()) {
-                            finish();
+
                             FirebaseUser user = mAuth.getCurrentUser();
-                            setRegistrarUsuario(usuario,correo,tvLati,tvLongi);
+                            setRegistrarUsuario(correo,tvLati,tvLongi);
+                            finish();
                             Intent intent = new Intent(getApplicationContext(), menu.class);
                             startActivity(intent);
+
+
+
+
 
                         }else{
                             Toast.makeText(registrar.this,"Datos incorrectos ",Toast.LENGTH_LONG).show();
@@ -145,15 +145,50 @@ public class registrar extends AppCompatActivity implements  LocationListener{
 
 
 
+
     }
 
+    Usuario user;
     //Para Almacenar os datos en un usuario activo
-    public void setRegistrarUsuario(String nombre, String correo, String latitud, String longitud){
+    public void setRegistrarUsuario(String correo, String latitud, String longitud){
         String tipo="normal";
         String id=databaseReference.push().getKey();
-        Usuario user=new Usuario(correo,longitud,latitud,tipo);
+        user=new Usuario(correo,longitud,latitud,tipo);
         databaseReference.child("usuario").child(id).setValue(user);
         Toast.makeText(registrar.this,"Se ha registrado el usuario ",Toast.LENGTH_LONG).show();
+
+        //Almacenar os datos en un usuario activo
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("usuario").addValueEventListener(new ValueEventListener(){
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+
+                    dataSnapshot.getChildren();
+
+                    for(DataSnapshot ds:dataSnapshot.getChildren()){
+
+                        //mejorar para obtener multiples resultados
+                        if(ds.child("correo").getValue().toString().equals(us.getCorreo())) {
+                            us.setCorreo(ds.child("correo").getValue().toString());
+                            us.setLongitud(ds.child("longitud").getValue().toString());
+                            us.setLatitud(ds.child("latitud").getValue().toString());
+                            us.setTipouser(ds.child("tipouser").getValue().toString());
+
+
+                            return;
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
