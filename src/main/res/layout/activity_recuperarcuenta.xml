@@ -7,27 +7,30 @@
     tools:context=".recuperarcuenta">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_width="256dp"
+        android:layout_height="69dp"
         android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="210dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="192dp"
+        android:layout_marginBottom="176dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/editText12"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:drawableLeft="@drawable/usuariohombre"
+            android:ems="10"
             android:hint="Correo"
+            android:inputType="textEmailAddress"
             android:textColor="#FF6518"
-            android:textColorHint="#FF6518" />
+            android:textColorHighlight="#00EB2E2E"
+            android:textColorHint="#FF6518"
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView

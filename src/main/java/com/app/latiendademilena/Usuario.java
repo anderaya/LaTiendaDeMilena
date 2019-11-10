@@ -17,7 +17,11 @@ public class Usuario {
 
     private String usuario;
     private String contraseña;
-    private String correo;;
+    private String correo;
+    private String longitud;
+    private String latitud;
+    private String tipouser;
+
 
     public String getTipouser() {
         return tipouser;
@@ -45,9 +49,7 @@ public class Usuario {
         this.latitud = latitud;
     }
 
-    private String longitud;
-    private String latitud;
-    private String tipouser;
+
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }

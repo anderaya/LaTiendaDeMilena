@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +33,8 @@ public class detallesproducto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detallesproducto);
+        //inicializar real time database
+        databaseReference= FirebaseDatabase.getInstance().getReference();
 
         regresar = (ImageView) findViewById(R.id.imageView14);
         regresar.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +48,8 @@ public class detallesproducto extends AppCompatActivity {
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                eliminarproducto();
+
             }
         });
 
@@ -63,7 +67,7 @@ public class detallesproducto extends AppCompatActivity {
         unidades=(EditText)findViewById(R.id.editText5);
         detalles=(EditText)findViewById(R.id.editText7);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference();
+
 
         databaseReference.child("producto").addValueEventListener(new ValueEventListener() {
 
@@ -82,10 +86,10 @@ public class detallesproducto extends AppCompatActivity {
                         //mejorar para obtener multiples resultados
                         if(ds.getKey().equals(info)) {
                             nombre=ds.child("nombre").getValue().toString();
-                            nombrep.setText("Nombre: "+nombre);
-                            precio.setText("Precio: "+ds.child("precio").getValue().toString());
-                            unidades.setText("Unidades: "+ds.child("unidades").getValue().toString());
-                            detalles.setText("Detalles: "+ds.child("detalles").getValue().toString());
+                            nombrep.setText(nombre);
+                            precio.setText(ds.child("precio").getValue().toString());
+                            unidades.setText(ds.child("unidades").getValue().toString());
+                            detalles.setText(ds.child("detalles").getValue().toString());
 
 
                         }
@@ -123,14 +127,24 @@ public class detallesproducto extends AppCompatActivity {
         Unidades=Double.parseDouble((unidades.getText().toString()));
 
         databaseReference.child("producto").child(info).child("precio").setValue(Precio);
-        databaseReference.child("producto").child(info).child("unidades").setValue(unidades);
+        databaseReference.child("producto").child(info).child("unidades").setValue(Unidades);
         databaseReference.child("producto").child(info).child("detalles").setValue(Detalles);
 
         finish();
+        Toast.makeText(detallesproducto.this,"Se han guardado los cambios",Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), detallesproducto.class);
         startActivity(intent);
 
 
+
+    }
+
+    public void eliminarproducto(){
+        databaseReference.child("producto").child(info).removeValue();
+        finish();
+        finish();
+
+        Toast.makeText(detallesproducto.this,"Se ha eliminado el producto",Toast.LENGTH_LONG).show();
 
     }
 

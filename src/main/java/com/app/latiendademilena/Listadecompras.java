@@ -2,7 +2,7 @@ package com.app.latiendademilena;
 
 public class Listadecompras {
 
-    static  String [][] lista= new String [3][2];
+    static  String [][] lista= {{"",""},{"",""},{"",""}};
     static int entrada=0;
 
 
@@ -20,7 +20,7 @@ public class Listadecompras {
         lista[entrada][1]=unidades;
         entrada++;
     }
-    public static void quitar(int select,String producto,String usuario){
+    public static void quitar(int select){
 
         String g1; //nombre
         String g2; //unidades
@@ -28,18 +28,16 @@ public class Listadecompras {
         lista[select][1]="";
 
         if(select==0){
-            g1=lista[1][0];
-            g2=lista[1][1];
 
-            lista[0][0]=g1;
-            lista[0][1]=g2;
+            lista[0][0]=lista[1][0];
+            lista[0][1]=lista[1][1];
 
             lista[1][0]=lista[2][0];
             lista[1][1]=lista[2][1];
 
             lista[2][0]="";
             lista[2][1]="";
-
+            entrada--;
 
         }else if(select==1){
 
@@ -48,9 +46,10 @@ public class Listadecompras {
 
             lista[2][0]="";
             lista[2][1]="";
-
+            entrada--;
 
         }else {
+
             entrada--;
         }
     }

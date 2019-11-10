@@ -42,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private DatabaseReference databaseReference;
     LocationManager locationManager;
     public usuarioActivo us=new usuarioActivo();
+    detallespedido dp=new detallespedido();
 
     int count;
 
@@ -58,34 +59,59 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         CheckPermission();
+
     }
 
 
 
-
+    double latitud,longitud;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        //obtener direccion
-
-        double latitud=parseDouble(tvLati);
-        double longitud=parseDouble(tvLongi);
-
-        mMap = googleMap;
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-
-        // Add a marker in Sydney and move the camera
-
-        LatLng tienda = new LatLng(latitud, longitud);
-        mMap.addMarker(new MarkerOptions().position(tienda).title("Tienda").snippet("Ubicacón de la tienda").icon(BitmapDescriptorFactory.fromResource(R.drawable.marcador)));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tienda, 10));
 
 
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
+        if(us.getTipouser().equals("admn")) {
+
+            latitud=dp.latitud;
+            longitud=dp.longitud;
 
 
-        mMap.setMyLocationEnabled(true);
+            mMap = googleMap;
+            mMap.getUiSettings().setZoomControlsEnabled(true);
+
+            // Add a marker in Sydney and move the camera
+
+            LatLng user = new LatLng(latitud,longitud);
+            mMap.addMarker(new MarkerOptions().position(user).title("Usuario").snippet("Ubicacón del usuario").icon(BitmapDescriptorFactory.fromResource(R.drawable.marcador)));
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user, 12));
+
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
+
+            mMap.setMyLocationEnabled(true);
+        }else{
+            latitud=4.549275900978003;
+            longitud=-74.14879874742302;
+            mMap = googleMap;
+            mMap.getUiSettings().setZoomControlsEnabled(true);
+
+            // Add a marker in Sydney and move the camera
+
+            LatLng tienda = new LatLng(latitud, longitud);
+            mMap.addMarker(new MarkerOptions().position(tienda).title("Tienda").snippet("Ubicacón de la tienda").icon(BitmapDescriptorFactory.fromResource(R.drawable.marcador)));
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tienda, 12));
+
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
+
+            mMap.setMyLocationEnabled(true);
+
+        }
 
 
 
@@ -121,8 +147,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location) {
         // Getting reference to TextView tv_longitude
-
-
 
 
         tvLongi = String.valueOf(location.getLongitude());

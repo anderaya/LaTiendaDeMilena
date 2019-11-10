@@ -52,8 +52,11 @@
         <activity
             android:name=".menu"
             android:label="@string/title_activity_menu"
-            android:theme="@style/NoActionBar" >
-            <intent-filter>
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".MainActivity">
+
+            <intent-filter>/>
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

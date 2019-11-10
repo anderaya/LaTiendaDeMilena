@@ -27,19 +27,27 @@ public class pedido extends AppCompatActivity {
 
     TextView producto1,producto2,producto3,unidades1,unidades2,unidades3,valort;
     ImageView img1,img2,img3;
-
+    double valor1=0,valor2=0,valor3=0;
     int numeros=list.entrada;
     double total;
     //nombre de los productos del 1 al 3
-    String p1,p2,p3;
+    String p1="",p2="",p3="";
+
+    //boleanos para evitar eliminar un lugar que ya no existe
+    boolean eliminado1=false,eliminado2=false,eliminado3=false;
 
     //unidades de los productos
-    String u1,u2,u3;
+    String u1="",u2="",u3="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido);
+
+        //inicializar variables
         total=0;
+
+
+
         regresar = (ImageView) findViewById(R.id.imageView20);
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +78,47 @@ public class pedido extends AppCompatActivity {
         img2=(ImageView)findViewById(R.id.imageView22);
         img3=(ImageView)findViewById(R.id.imageView23);
 
+        //imagenes para eliminar un pedido de la lista
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if( !eliminado1&&list.entrada>0) {
+                    list.quitar(0);
+                    producto1.setText("");
+                    unidades1.setText("");
+                    eliminado1=true;
+                    total=total-valor1;
+                    valort.setText("Valor total: "+String.valueOf(total));
+                }
+            }
+        });
+        img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if( !eliminado2&&list.entrada>1) {
+                    list.quitar(1);
+                    producto2.setText("");
+                    unidades2.setText("");
+                    eliminado2=true;
+                    total=total-valor2;
+                    valort.setText("Valor total: "+String.valueOf(total));
+                }
+
+            }
+        });
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if( !eliminado3&&list.entrada==3) {
+                    list.quitar(2);
+                    producto3.setText("");
+                    unidades3.setText("");
+                    total=total-valor3;
+                    eliminado3=true;
+                    valort.setText("Valor total: "+String.valueOf(total));
+                }
+            }
+        });
 
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
@@ -85,6 +134,7 @@ public class pedido extends AppCompatActivity {
                         if(numeros>=1&&ds.getKey().toString().equals(list.lista[0][0])){
                             producto1.setText(ds.child("nombre").getValue().toString());
                             unidades1.setText(list.lista[0][1]);
+                            valor1=Double.parseDouble(ds.child("precio").getValue().toString())*Double.parseDouble(list.lista[0][1]);
                             total= total+Double.parseDouble(ds.child("precio").getValue().toString())*Double.parseDouble(list.lista[0][1]);
                             p1=ds.child("nombre").getValue().toString();
                             u1=list.lista[0][1];
@@ -93,6 +143,7 @@ public class pedido extends AppCompatActivity {
                         if(numeros>=2&&ds.getKey().toString().equals(list.lista[1][0])){
                             producto2.setText(ds.child("nombre").getValue().toString());
                             unidades2.setText(list.lista[1][1]);
+                            valor2=Double.parseDouble(ds.child("precio").getValue().toString())*Double.parseDouble(list.lista[1][1]);
                             total= total+Double.parseDouble(ds.child("precio").getValue().toString())*Double.parseDouble(list.lista[1][1]);
                             p2=ds.child("nombre").getValue().toString();
                             u2=list.lista[1][1];
@@ -100,6 +151,7 @@ public class pedido extends AppCompatActivity {
                         if(numeros==3&&ds.getKey().toString().equals(list.lista[2][0])){
                             producto3.setText(ds.child("nombre").getValue().toString());
                             unidades3.setText(list.lista[2][1]);
+                            valor3=Double.parseDouble(ds.child("precio").getValue().toString())*Double.parseDouble(list.lista[2][1]);
                             total= total+Double.parseDouble(ds.child("precio").getValue().toString())*Double.parseDouble(list.lista[2][1]);
                             p3=ds.child("nombre").getValue().toString();
                             u3=list.lista[2][1];

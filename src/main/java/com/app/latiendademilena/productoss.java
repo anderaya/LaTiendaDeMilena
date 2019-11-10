@@ -27,6 +27,7 @@ public class productoss extends AppCompatActivity {
     TextView Nombre,precio,nombre2,precio2;
     EditText unidades,unidades2;
     Listadecompras list;
+    usuarioActivo us=new usuarioActivo();
 
     int contador;
 
@@ -64,9 +65,15 @@ public class productoss extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //para usuario normal
-                Intent intent = new Intent(getApplicationContext(), detallesproducton.class);
-                startActivity(intent);
-                seleccionado=id1;
+                if(us.getTipouser().equals("admn")){
+                    Intent intent = new Intent(getApplicationContext(), detallesproducto.class);
+                    startActivity(intent);
+                    seleccionado = id1;
+                }else {
+                    Intent intent = new Intent(getApplicationContext(), detallesproducton.class);
+                    startActivity(intent);
+                    seleccionado = id1;
+                }
 
             }
         });
@@ -75,9 +82,15 @@ public class productoss extends AppCompatActivity {
         producto2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), detallesproducton.class);
-                startActivity(intent);
-                seleccionado=id2;
+                if(us.getTipouser().equals("admn")){
+                    Intent intent = new Intent(getApplicationContext(), detallesproducto.class);
+                    startActivity(intent);
+                    seleccionado = id2;
+                }else {
+                    Intent intent = new Intent(getApplicationContext(), detallesproducton.class);
+                    startActivity(intent);
+                    seleccionado = id2;
+                }
 
             }
         });
