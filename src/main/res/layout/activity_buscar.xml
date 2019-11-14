@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView25"
-        android:layout_width="320dp"
-        android:layout_height="70dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="410dp"
         android:background="#E83309"
         android:textColor="#FCFCFC"
@@ -23,21 +23,19 @@
 
     <TextView
         android:id="@+id/recuperarcuenta3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="101dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="423dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="392dp"
         android:text="Buscar"
         android:textColor="#FAFAFA"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView19"
@@ -49,16 +47,16 @@
         android:layout_marginBottom="428dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.241"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.022"
         app:srcCompat="@drawable/backwardarrow" />
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="147dp"
-        android:layout_height="64dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="371dp"
         android:layout_marginEnd="100dp"
@@ -74,13 +72,11 @@
 
     <TextView
         android:id="@+id/textView32"
-        android:layout_width="288dp"
-        android:layout_height="59dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="141dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="280dp"
         android:text="Nombre del producto"
         android:textColor="#FF6518"
@@ -92,13 +88,11 @@
 
     <EditText
         android:id="@+id/editText6"
-        android:layout_width="277dp"
-        android:layout_height="55dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
         android:layout_marginTop="226dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:layout_marginBottom="199dp"
         android:drawableLeft="@drawable/producto"
         android:ems="10"
