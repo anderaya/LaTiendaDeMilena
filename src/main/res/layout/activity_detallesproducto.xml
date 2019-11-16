@@ -18,7 +18,7 @@
         android:layout_marginBottom="33dp"
         android:background="#FF140A"
         android:drawableEnd="@drawable/confirmar"
-        android:text="@android:string/ok"
+        android:text="OK"
         android:textColor="#FAFAFA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

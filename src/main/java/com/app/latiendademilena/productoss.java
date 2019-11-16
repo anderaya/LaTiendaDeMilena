@@ -63,17 +63,20 @@ public class productoss extends AppCompatActivity {
 
         producto1 = (ImageView) findViewById(R.id.imageView17);
         producto1.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                //para usuario normal
-                if(us.getTipouser().equals("admn")){
-                    Intent intent = new Intent(getApplicationContext(), detallesproducto.class);
-                    startActivity(intent);
-                    seleccionado = id1;
-                }else {
-                    Intent intent = new Intent(getApplicationContext(), detallesproducton.class);
-                    startActivity(intent);
-                    seleccionado = id1;
+                if(id1 != null) {
+                    //para usuario normal
+                    if (us.getTipouser().equals("admn")) {
+                        Intent intent = new Intent(getApplicationContext(), detallesproducto.class);
+                        startActivity(intent);
+                        seleccionado = id1;
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), detallesproducton.class);
+                        startActivity(intent);
+                        seleccionado = id1;
+                    }
                 }
 
             }
@@ -83,16 +86,17 @@ public class productoss extends AppCompatActivity {
         producto2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(us.getTipouser().equals("admn")){
-                    Intent intent = new Intent(getApplicationContext(), detallesproducto.class);
-                    startActivity(intent);
-                    seleccionado = id2;
-                }else {
-                    Intent intent = new Intent(getApplicationContext(), detallesproducton.class);
-                    startActivity(intent);
-                    seleccionado = id2;
+                if(id2 != null) {
+                    if (us.getTipouser().equals("admn")) {
+                        Intent intent = new Intent(getApplicationContext(), detallesproducto.class);
+                        startActivity(intent);
+                        seleccionado = id2;
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), detallesproducton.class);
+                        startActivity(intent);
+                        seleccionado = id2;
+                    }
                 }
-
             }
         });
 

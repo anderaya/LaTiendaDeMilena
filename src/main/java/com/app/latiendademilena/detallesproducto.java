@@ -32,7 +32,7 @@ public class detallesproducto extends AppCompatActivity {
     EditText precio,unidades,detalles;
     private DatabaseReference databaseReference;
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageRef;
+    String nombreimagen="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,22 +101,15 @@ public class detallesproducto extends AppCompatActivity {
 
 
                             if(ds.child("nombreimagen").getValue().toString()!="") {
+                                nombreimagen=ds.child("nombreimagen").getValue().toString();
                                 Glide.with(detallesproducto.this)
                                         .load(ds.child("nombreimagen").getValue().toString())
                                         .into(imagenproducto);
+
                             }
-
-
                         }
-
-
-
                     }
-                    //String nombre=dataSnapshot.child("titulo").getValue().toString();
-
-
                 }
-
             }
 
             @Override
@@ -155,6 +148,11 @@ public class detallesproducto extends AppCompatActivity {
     }
 
     public void eliminarproducto(){
+
+        StorageReference ref=storage.getReferenceFromUrl(nombreimagen);
+        if(nombreimagen!=""){
+            ref.delete();
+        }
         databaseReference.child("producto").child(info).removeValue();
         finish();
         finish();
