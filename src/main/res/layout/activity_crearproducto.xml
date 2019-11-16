@@ -123,6 +123,7 @@
         android:background="#FF6518"
         android:drawableLeft="@drawable/imagen"
         android:text="Subir imagen..."
+        android:onClick="oncllick"
         android:textColor="#FDFDFD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

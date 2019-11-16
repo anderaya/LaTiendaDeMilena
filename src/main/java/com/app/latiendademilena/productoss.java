@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -125,6 +126,11 @@ public class productoss extends AppCompatActivity {
                             nombre2.setText(nombre);
                             precio2.setText("$ "+ds.child("precio").getValue().toString());
                             id2=ds.getKey().toString();
+                            if(ds.child("nombreimagen").getValue().toString()!="") {
+                                Glide.with(productoss.this)
+                                        .load(ds.child("nombreimagen").getValue().toString())
+                                        .into(producto2);
+                            }
                             return;
                         }
 
@@ -135,6 +141,12 @@ public class productoss extends AppCompatActivity {
                             precio.setText("$ "+ds.child("precio").getValue().toString());
                             id1=ds.getKey().toString();
                             contador++;
+                            if(ds.child("nombreimagen").getValue().toString()!="") {
+                                Glide.with(productoss.this)
+                                        .load(ds.child("nombreimagen").getValue().toString())
+                                        .into(producto1);
+                            }
+
                         }
 
 

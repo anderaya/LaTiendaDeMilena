@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class detallesproducton extends AppCompatActivity {
-    ImageView regresar;
+    ImageView regresar,imagenproducto;
     TextView Nombre,precio,unidades,detalles;
     productoss result=new productoss();
     String info=result.seleccionado;
@@ -36,6 +37,8 @@ public class detallesproducton extends AppCompatActivity {
                 finish();
             }
         });
+
+        imagenproducto=(ImageView)findViewById(R.id.imageView33);
 
         Nombre=(TextView)findViewById(R.id.textView46);
         precio=(TextView)findViewById(R.id.textView59);
@@ -65,7 +68,11 @@ public class detallesproducton extends AppCompatActivity {
                             precio.setText("Precio: "+ds.child("precio").getValue().toString());
                             unidades.setText("Unidades: "+ds.child("unidades").getValue().toString());
                             detalles.setText("Detalles: "+ds.child("detalles").getValue().toString());
-
+                            if(ds.child("nombreimagen").getValue().toString()!="") {
+                                Glide.with(detallesproducton.this)
+                                        .load(ds.child("nombreimagen").getValue().toString())
+                                        .into(imagenproducto);
+                            }
 
                         }
 

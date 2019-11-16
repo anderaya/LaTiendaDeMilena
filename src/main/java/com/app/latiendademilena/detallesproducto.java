@@ -1,9 +1,6 @@
 package com.app.latiendademilena;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,21 +10,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class detallesproducto extends AppCompatActivity {
 
-    ImageView regresar;
+    ImageView regresar,imagenproducto;
     Button eliminar, ok;
     productoss result=new productoss();
     String info=result.seleccionado;
     TextView nombrep;
     EditText precio,unidades,detalles;
     private DatabaseReference databaseReference;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,7 @@ public class detallesproducto extends AppCompatActivity {
         setContentView(R.layout.activity_detallesproducto);
         //inicializar real time database
         databaseReference= FirebaseDatabase.getInstance().getReference();
+
 
         regresar = (ImageView) findViewById(R.id.imageView14);
         regresar.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +58,8 @@ public class detallesproducto extends AppCompatActivity {
 
             }
         });
+
+        imagenproducto=(ImageView)findViewById(R.id.imageView15);
 
         ok = (Button) findViewById(R.id.button8);
         ok.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +98,13 @@ public class detallesproducto extends AppCompatActivity {
                             precio.setText(ds.child("precio").getValue().toString());
                             unidades.setText(ds.child("unidades").getValue().toString());
                             detalles.setText(ds.child("detalles").getValue().toString());
+
+
+                            if(ds.child("nombreimagen").getValue().toString()!="") {
+                                Glide.with(detallesproducto.this)
+                                        .load(ds.child("nombreimagen").getValue().toString())
+                                        .into(imagenproducto);
+                            }
 
 
                         }
